@@ -5,7 +5,10 @@ function Header() {
     <header className="header">
       <div className="header-container">
         <NavLink to="/" className="header-logo">
-          <img src="/logo_hbt.png" alt="HBT Engineering & Technology" />
+          <img
+            src="/logo_hbt.png"
+            alt="HBT Engineering & Technology"
+          />
         </NavLink>
 
         <nav className="header-nav">
@@ -15,15 +18,9 @@ function Header() {
           <NavLink to="/soluciones">Soluciones</NavLink>
           <NavLink to="/proyectos">Proyectos</NavLink>
           <NavLink to="/industrias">Industrias</NavLink>
-          <NavLink to="/blog">Blog</NavLink>
-          <NavLink to="/contacto">Contacto</NavLink>
         </nav>
 
         <div className="header-actions">
-          <button className="header-lang" type="button">
-            ES
-          </button>
-
           <NavLink to="/contacto" className="header-cta">
             Contacto
           </NavLink>

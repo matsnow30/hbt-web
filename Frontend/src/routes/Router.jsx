@@ -12,6 +12,12 @@ import Industrias from "../pages/Industrias.jsx";
 import Blog from "../pages/Blog.jsx";
 import Contacto from "../pages/Contacto.jsx";
 
+import Privacidad from "../pages/Privacidad.jsx";
+import Cookies from "../pages/Cookies.jsx";
+import Terminos from "../pages/Terminos.jsx";
+import AvisoLegal from "../pages/AvisoLegal.jsx";
+import Accesibilidad from "../pages/Accesibilidad.jsx";
+
 function Router() {
   return (
     <BrowserRouter>
@@ -26,6 +32,12 @@ function Router() {
         <Route path="/industrias" element={<Industrias />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/contacto" element={<Contacto />} />
+
+        <Route path="/privacidad" element={<Privacidad />} />
+        <Route path="/cookies" element={<Cookies />} />
+        <Route path="/terminos" element={<Terminos />} />
+        <Route path="/aviso-legal" element={<AvisoLegal />} />
+        <Route path="/accesibilidad" element={<Accesibilidad />} />
       </Routes>
 
       <Footer />
