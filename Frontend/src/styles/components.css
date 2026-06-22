@@ -470,76 +470,242 @@
 ========================= */
 
 .contact-page {
-  max-width: 1400px;
-  margin: auto;
-  padding: 150px 40px 120px;
+  width: min(1440px, 94%);
+  min-height: calc(100vh - 110px);
+  margin: 0 auto;
+  padding: 46px 0 38px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .contact-hero {
-  max-width: 850px;
-  margin-bottom: 80px;
+  max-width: 720px;
+  margin-bottom: 34px;
+}
+
+.contact-hero span {
+  display: inline-flex;
+  margin-bottom: 12px;
+  color: #032873;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
 }
 
 .contact-hero h1 {
-  margin: 24px 0;
-  color: #000000;
-  font-size: 78px;
-  line-height: 1;
+  max-width: 720px;
+  margin: 0 0 18px;
+  color: #07111f;
+  font-size: clamp(42px, 4vw, 62px);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
 }
 
 .contact-hero p {
-  color: #6c7480;
-  font-size: 22px;
-  line-height: 1.8;
+  max-width: 660px;
+  margin: 0;
+  color: #5a697d;
+  font-size: 17px;
+  line-height: 1.7;
+  font-weight: 500;
 }
 
-.contact-grid {
+.contact-layout {
   display: grid;
-  grid-template-columns: 420px 1fr;
-  gap: 50px;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 32px;
+  align-items: start;
 }
 
-.contact-info {
+.contact-steps {
+  padding: 32px;
+  border-radius: 26px;
+  background: #f5f7fb;
+  border: 1px solid rgba(3, 40, 115, 0.08);
+}
+
+.contact-steps h2 {
+  margin: 0 0 20px;
+  color: #07111f;
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.contact-step {
+  padding: 18px 0;
+  border-top: 1px solid rgba(3, 40, 115, 0.1);
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 16px;
+}
+
+.contact-step span {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: #032873;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
   display: flex;
-  flex-direction: column;
-  gap: 24px;
+  align-items: center;
+  justify-content: center;
 }
 
-.info-card {
-  padding: 40px;
-  border: 1px solid #e6e9ee;
-  border-radius: 24px;
-  background: #ffffff;
+.contact-step h3 {
+  margin: 0;
+  color: #07111f;
+  font-size: 17px;
+  font-weight: 800;
 }
 
-.info-card h3 {
-  margin-bottom: 12px;
-  color: #032b73;
+.contact-step p {
+  margin: 6px 0 0;
+  color: #5a697d;
+  font-size: 14px;
+  line-height: 1.55;
 }
 
 .contact-form {
-  padding: 50px;
-  border: 1px solid #e7ebf0;
-  border-radius: 24px;
+  padding: 32px;
+  border: 1px solid rgba(3, 40, 115, 0.1);
+  border-radius: 26px;
   background: #ffffff;
+  box-shadow: 0 28px 80px rgba(7, 17, 31, 0.065);
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 14px;
 }
 
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  padding: 22px;
-  border: none;
-  border-radius: 14px;
-  background: #f5f7fa;
-  font-size: 18px;
+  padding: 18px 20px;
+  border: 1px solid transparent;
+  border-radius: 15px;
+  background: #f3f6fa;
+  color: #07111f;
+  font-family: inherit;
+  font-size: 15.5px;
   outline: none;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  background: #ffffff;
+  border-color: rgba(3, 40, 115, 0.35);
+  box-shadow: 0 0 0 4px rgba(3, 40, 115, 0.08);
 }
 
 .contact-form textarea {
-  resize: none;
+  min-height: 120px;
+  resize: vertical;
+}
+
+.contact-form button {
+  min-height: 58px;
+  border: none;
+  border-radius: 999px;
+  background: #032873;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 22px 64px rgba(3, 40, 115, 0.28);
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.contact-form button:hover {
+  background: #021f59;
+  transform: translateY(-3px);
+  box-shadow: 0 30px 82px rgba(3, 40, 115, 0.36);
+}
+
+.contact-closing {
+  margin-top: 28px;
+  padding: 22px 28px;
+  border-radius: 22px;
+  background: #032873;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 26px;
+}
+
+.contact-closing p {
+  max-width: 620px;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.contact-closing div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact-closing span,
+.contact-closing a {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.contact-closing a:hover,
+.contact-closing a:focus-visible {
+  color: #ffffff;
+}
+
+@media (max-width: 980px) {
+  .contact-page {
+    width: min(100%, 92%);
+    min-height: auto;
+    padding: 82px 0 72px;
+    justify-content: flex-start;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-closing {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 760px) {
+  .contact-hero h1 {
+    font-size: 42px;
+  }
+
+  .contact-hero p {
+    font-size: 16px;
+  }
+
+  .contact-steps,
+  .contact-form,
+  .contact-closing {
+    padding: 28px;
+    border-radius: 24px;
+  }
 }
 
 /* =========================
@@ -781,6 +947,25 @@
   color: #07111f;
 }
 
+
+/* =========================
+   NOSOTROS REVEAL / MICROINTERACCIONES
+========================= */
+
+.about-reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 .about__eyebrow {
   display: inline-flex;
   width: fit-content;
@@ -812,14 +997,20 @@
     linear-gradient(135deg, #07111f 0%, #06101d 100%);
 }
 
-.about__hero-copy h1 {
-  max-width: 600px;
+.about__hero-copy h1{
   margin: 0;
-  color: #ffffff;
-  font-size: clamp(48px, 5.4vw, 86px);
+
+  max-width: 560px;
+
+  font-size: clamp(42px, 3.6vw, 64px);
+
+  line-height: .95;
+
+  letter-spacing: -0.065em;
+
   font-weight: 800;
-  line-height: 0.95;
-  letter-spacing: -4px;
+
+  color: #ffffff;
 }
 
 .about__hero-copy h1 strong {
@@ -856,6 +1047,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  transition:
+    transform 0.28s ease,
+    background 0.28s ease;
+}
+
+.about__scroll-link:hover span {
+  transform: translateY(4px);
+  background: rgba(13, 110, 253, 0.12);
 }
 
 .about__hero-image {
@@ -880,6 +1079,16 @@
   height: 100%;
   display: block;
   object-fit: cover;
+  transition:
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.85s ease;
+}
+
+.about__hero-image:hover img,
+.about__story-image:hover img,
+.about__commitment-image:hover img {
+  transform: scale(1.045);
+  filter: saturate(1.04) contrast(1.03);
 }
 
 .about__story {
@@ -1362,6 +1571,53 @@
   line-height: 1.8;
 }
 
+
+
+/* =========================
+   NOSOTROS HOVER PREMIUM
+========================= */
+
+.about__fact,
+.about__timeline-item,
+.about__commitment-item,
+.about__mission-card,
+.about__culture-list span {
+  transition:
+    transform 0.32s ease,
+    box-shadow 0.32s ease,
+    border-color 0.32s ease,
+    background 0.32s ease;
+}
+
+.about__fact:hover,
+.about__timeline-item:hover,
+.about__mission-card:hover {
+  transform: translateY(-5px);
+}
+
+.about__timeline-item:hover .about__timeline-icon {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 24px 64px rgba(13, 110, 253, 0.18);
+}
+
+.about__timeline-icon {
+  transition:
+    transform 0.32s ease,
+    box-shadow 0.32s ease,
+    border-color 0.32s ease;
+}
+
+.about__commitment-item:hover,
+.about__culture-list span:hover {
+  background: rgba(13, 110, 253, 0.045);
+}
+
+.about__button:focus-visible,
+.about__scroll-link:focus-visible {
+  outline: 3px solid rgba(13, 110, 253, 0.45);
+  outline-offset: 5px;
+}
+
 /* =========================
    NOSOTROS RESPONSIVE
 ========================= */
@@ -1536,5 +1792,31 @@
 
   .about__cta {
     min-height: 430px;
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .about-reveal,
+  .about-reveal.is-visible,
+  .about__hero-image img,
+  .about__story-image img,
+  .about__commitment-image img,
+  .about__scroll-link span,
+  .about__fact,
+  .about__timeline-item,
+  .about__timeline-icon,
+  .about__principle-card,
+  .about__commitment-item,
+  .about__mission-card,
+  .about__culture-list span,
+  .about__button {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+
+  .about-reveal {
+    opacity: 1;
   }
 }

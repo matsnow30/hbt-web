@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="footer__grid">
           <div className="footer__brand">
             <img
-              src="/logo_hbt.png"
+              src="/logo_footer.png"
               alt="HBT Engineering & Technology Ltda."
               className="footer__logo"
             />

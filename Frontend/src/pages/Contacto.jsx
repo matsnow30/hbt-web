@@ -1,55 +1,81 @@
 function Contacto() {
   return (
     <main className="contact-page">
-
       <section className="contact-hero">
 
-        <span className="section-tag">
-          CONTACTO
+        <span className="contact-label">
+          INICIEMOS UNA CONVERSACIÓN
         </span>
 
         <h1>
-          Conversemos sobre
-          tu próximo proyecto.
+          Convirtamos un desafío operacional en una solución real.
         </h1>
 
         <p>
-          Cuéntanos qué proceso quieres mejorar
-          y te ayudaremos a construir una solución
-          tecnológica o de ingeniería.
+          Cuéntanos el contexto de tu organización.
+          Evaluaremos cómo aportar valor desde ingeniería,
+          sistemas y datos.
         </p>
 
       </section>
 
-      <section className="contact-grid">
+      <section className="contact-layout">
 
-        <div className="contact-info">
+        <aside className="contact-steps">
 
-          <div className="info-card">
+          <h2>
+            Qué ocurre después del contacto
+          </h2>
 
-            <h3>Correo</h3>
+          <article className="contact-step">
+            <span>01</span>
 
-            <p>contacto@hbt.cl</p>
+            <div>
+              <h3>Recepción</h3>
 
-          </div>
+              <p>
+                Revisamos el contexto inicial.
+              </p>
+            </div>
+          </article>
 
-          <div className="info-card">
+          <article className="contact-step">
+            <span>02</span>
 
-            <h3>Ubicación</h3>
+            <div>
+              <h3>Revisión</h3>
 
-            <p>Talca, Chile</p>
+              <p>
+                Identificamos oportunidades.
+              </p>
+            </div>
+          </article>
 
-          </div>
+          <article className="contact-step">
+            <span>03</span>
 
-          <div className="info-card">
+            <div>
+              <h3>Reunión</h3>
 
-            <h3>Respuesta</h3>
+              <p>
+                Alineamos alcance y objetivos.
+              </p>
+            </div>
+          </article>
 
-            <p>Menos de 24 horas hábiles</p>
+          <article className="contact-step">
+            <span>04</span>
 
-          </div>
+            <div>
+              <h3>Propuesta</h3>
 
-        </div>
+              <p>
+                Definimos próximos pasos.
+              </p>
+            </div>
+          </article>
+
+        </aside>
 
         <form className="contact-form">
 
@@ -69,15 +95,12 @@ function Contacto() {
           />
 
           <textarea
-            rows="6"
+            rows="5"
             placeholder="Cuéntanos qué necesitas..."
           />
 
-          <button
-            type="button"
-            className="btn-primary"
-          >
-            Enviar solicitud
+          <button type="submit">
+            Solicitar conversación
           </button>
 
         </form>

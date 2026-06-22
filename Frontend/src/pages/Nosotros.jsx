@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const timelineItems = [
@@ -86,10 +86,33 @@ const culture = [
 ];
 
 function Nosotros() {
+  useEffect(() => {
+    const elements = document.querySelectorAll(".about-reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.16,
+        rootMargin: "0px 0px -70px 0px",
+      }
+    );
+
+    elements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main className="about">
       <section className="about__hero">
-        <div className="about__hero-copy">
+        <div className="about__hero-copy about-reveal">
           <span className="about__eyebrow">NOSOTROS</span>
 
           <h1>
@@ -108,7 +131,7 @@ function Nosotros() {
           </a>
         </div>
 
-        <div className="about__hero-image" aria-hidden="true">
+        <div className="about__hero-image about-reveal" aria-hidden="true">
           <img
             src="/nosotros/edificio.jpg"
             alt=""
@@ -117,7 +140,7 @@ function Nosotros() {
       </section>
 
       <section id="historia" className="about__story">
-        <div className="about__story-card">
+        <div className="about__story-card about-reveal">
           <span className="about__eyebrow">NUESTRA HISTORIA</span>
 
           <h2>
@@ -147,7 +170,7 @@ function Nosotros() {
 
         </div>
 
-        <aside className="about__story-facts" aria-label="Datos de origen HBT">
+        <aside className="about__story-facts about-reveal" aria-label="Datos de origen HBT">
           <div className="about__fact">
             <span>2026</span>
             <p>Año de origen</p>
@@ -164,7 +187,7 @@ function Nosotros() {
           </div>
         </aside>
 
-        <div className="about__story-image">
+        <div className="about__story-image about-reveal">
           <img src="/nosotros/oficina.jpg" alt="Espacio de trabajo moderno" />
           <div className="about__story-image-text">
             Tecnología que genera <strong>valor real.</strong>
@@ -172,13 +195,13 @@ function Nosotros() {
         </div>
       </section>
 
-      <section className="about__path">
+      <section className="about__path about-reveal">
         <span className="about__eyebrow">NUESTRO CAMINO</span>
         <h2>Cada paso nos trajo hasta aquí.</h2>
 
         <div className="about__timeline">
-          {timelineItems.map((item) => (
-            <article className="about__timeline-item" key={item.title}>
+          {timelineItems.map((item, index) => (
+            <article className="about__timeline-item about-reveal" style={{ transitionDelay: `${index * 80}ms` }} key={item.title}>
               <div className="about__timeline-icon">
                 <img src={item.icon} alt="" aria-hidden="true" />
               </div>
@@ -191,13 +214,13 @@ function Nosotros() {
         </div>
       </section>
 
-      <section className="about__principles">
+      <section className="about__principles about-reveal">
         <span className="about__eyebrow">NUESTRA FILOSOFÍA</span>
         <h2>Principios que guían todo lo que hacemos.</h2>
 
         <div className="about__principles-grid">
-          {principles.map((principle) => (
-            <article className="about__principle-card" key={principle.title}>
+          {principles.map((principle, index) => (
+            <article className="about__principle-card" style={{ transitionDelay: `${index * 90}ms` }} key={principle.title}>
               <img src={principle.icon} alt="" aria-hidden="true" />
               <h3>{principle.title}</h3>
               <p>{principle.text}</p>
@@ -206,7 +229,7 @@ function Nosotros() {
         </div>
       </section>
 
-      <section className="about__commitment">
+      <section className="about__commitment about-reveal">
         <div className="about__commitment-image">
           <img
             src="/nosotros/pinguino-humboldt.png"
@@ -236,8 +259,8 @@ function Nosotros() {
           </p>
 
           <div className="about__commitment-grid">
-            {commitments.map((item) => (
-              <div className="about__commitment-item" key={item.title}>
+            {commitments.map((item, index) => (
+              <div className="about__commitment-item" style={{ transitionDelay: `${index * 80}ms` }} key={item.title}>
                 <img src={item.icon} alt="" aria-hidden="true" />
                 <span>{item.title}</span>
               </div>
@@ -246,7 +269,7 @@ function Nosotros() {
         </div>
       </section>
 
-      <section className="about__mission">
+      <section className="about__mission about-reveal">
         <article className="about__mission-card">
           <div className="about__mission-icon" aria-hidden="true">◎</div>
           <span className="about__eyebrow">NUESTRA MISIÓN</span>
@@ -277,18 +300,18 @@ function Nosotros() {
         </article>
       </section>
 
-      <section className="about__culture">
+      <section className="about__culture about-reveal">
         <span className="about__eyebrow">NUESTRA CULTURA</span>
         <h2>Así trabajamos. Así construimos futuro.</h2>
 
         <div className="about__culture-list">
-          {culture.map((item) => (
-            <span key={item}>{item}</span>
+          {culture.map((item, index) => (
+            <span style={{ transitionDelay: `${index * 60}ms` }} key={item}>{item}</span>
           ))}
         </div>
       </section>
 
-      <section className="about__cta">
+      <section className="about__cta about-reveal">
         <div>
           <h2>
             Construyamos algo que genere <strong>impacto.</strong>
