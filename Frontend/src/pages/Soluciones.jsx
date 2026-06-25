@@ -1,34 +1,36 @@
+import { Link } from "react-router-dom";
+
 function Soluciones() {
   const soluciones = [
     {
-      titulo: "Portales empresariales",
+      titulo: "Portal operativo",
       texto:
-        "Plataformas web para clientes, operaciones internas, gestión documental y seguimiento de procesos.",
+        "Sistema central para registrar solicitudes, controlar estados, asignar responsables y dar seguimiento diario.",
     },
     {
-      titulo: "Automatización documental",
+      titulo: "Flujo documental",
       texto:
-        "Flujos digitales para reducir trabajo manual, ordenar información y acelerar respuestas operacionales.",
+        "Circuitos digitales para ordenar aprobaciones, documentos, alertas y trazabilidad de cada etapa.",
     },
     {
-      titulo: "Dashboards ejecutivos",
+      titulo: "Tablero de gestión",
       texto:
-        "Paneles de control con indicadores claros para apoyar la toma de decisiones estratégicas.",
+        "Indicadores visuales para monitorear avance, cumplimiento, productividad y puntos críticos del negocio.",
     },
     {
-      titulo: "Sistemas internos",
+      titulo: "Sistema interno a medida",
       texto:
-        "Herramientas personalizadas para administrar procesos, usuarios, registros y operaciones críticas.",
+        "Aplicaciones para administrar registros, equipos, tareas, inventarios o procesos específicos de la empresa.",
     },
     {
-      titulo: "Integraciones tecnológicas",
+      titulo: "Conexión entre sistemas",
       texto:
-        "Conexión entre sistemas, bases de datos y plataformas para mejorar continuidad operacional.",
+        "Integraciones para evitar doble ingreso, inconsistencias y pérdida de información entre plataformas.",
     },
     {
-      titulo: "IA aplicada",
+      titulo: "Apoyo con inteligencia artificial",
       texto:
-        "Soluciones inteligentes para análisis, asistencia operativa, clasificación y apoyo a decisiones.",
+        "Herramientas para clasificar información, buscar documentos, apoyar respuestas internas o analizar datos.",
     },
   ];
 
@@ -38,12 +40,12 @@ function Soluciones() {
         <span>SOLUCIONES</span>
 
         <h1>
-          Soluciones digitales para mejorar operación, control y crecimiento.
+          Soluciones para trabajar con más orden.
         </h1>
 
         <p>
-          Diseñamos herramientas tecnológicas adaptadas a procesos reales,
-          combinando ingeniería, software, datos y automatización.
+          Convertimos necesidades operativas en sistemas, flujos, tableros e integraciones
+          que puedan ser usados por equipos reales, no solo por áreas técnicas.
         </p>
       </section>
 
@@ -56,9 +58,9 @@ function Soluciones() {
 
             <p>{item.texto}</p>
 
-            <button>
-              Ver solución
-            </button>
+            <Link to="/contacto">
+              Evaluar solución
+            </Link>
           </article>
         ))}
       </section>

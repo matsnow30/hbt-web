@@ -1,112 +1,218 @@
+import { useState } from "react";
+
 function Contacto() {
+  const [estadoEnvio, setEstadoEnvio] = useState("idle");
+
+  const desafios = [
+    "Diagnóstico de procesos",
+    "Sistema a medida",
+    "Automatización de tareas",
+    "Tableros e indicadores",
+    "Integración entre sistemas",
+    "Otro",
+  ];
+
+  const pasos = [
+    "Revisamos tu solicitud.",
+    "Te contactamos en 24 a 48 horas hábiles.",
+    "Coordinamos una conversación inicial.",
+    "Si hace sentido, levantamos el proceso contigo.",
+  ];
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setEstadoEnvio("sending");
+
+    const formData = new FormData(event.currentTarget);
+    const datosContacto = {
+      nombre: formData.get("nombre"),
+      correo: formData.get("correo"),
+      empresa: formData.get("empresa"),
+      telefono: formData.get("telefono"),
+      industria: formData.get("industria"),
+      desafios: formData.getAll("desafio"),
+      mensaje: formData.get("mensaje"),
+    };
+
+    window.setTimeout(() => {
+      console.info("Solicitud HBT pendiente de conectar al backend:", datosContacto);
+      setEstadoEnvio("success");
+      event.target.reset();
+    }, 700);
+  };
+
   return (
     <main className="contact-page">
       <section className="contact-hero">
-
         <span className="contact-label">
-          INICIEMOS UNA CONVERSACIÓN
+          CONTACTO HBT
         </span>
 
         <h1>
-          Convirtamos un desafío operacional en una solución real.
+          Cuéntanos qué necesitas ordenar.
         </h1>
 
         <p>
-          Cuéntanos el contexto de tu organización.
-          Evaluaremos cómo aportar valor desde ingeniería,
-          sistemas y datos.
+          Describe el proceso, sistema o reporte que quieres mejorar. Revisaremos
+          tu caso y te contactaremos para coordinar una primera conversación.
         </p>
-
       </section>
 
-      <section className="contact-layout">
+      <section className="contact-layout" aria-label="Contacto HBT">
+        <aside className="contact-next">
+          <span>QUÉ OCURRE DESPUÉS</span>
+          <h2>Una primera conversación, sin venderte una solución antes de entender.</h2>
 
-        <aside className="contact-steps">
+          <ol>
+            {pasos.map((paso, index) => (
+              <li key={paso}>
+                <strong>{String(index + 1).padStart(2, "0")}</strong>
+                <p>{paso}</p>
+              </li>
+            ))}
+          </ol>
 
-          <h2>
-            Qué ocurre después del contacto
-          </h2>
-
-          <article className="contact-step">
-            <span>01</span>
-
-            <div>
-              <h3>Recepción</h3>
-
-              <p>
-                Revisamos el contexto inicial.
-              </p>
-            </div>
-          </article>
-
-          <article className="contact-step">
-            <span>02</span>
-
-            <div>
-              <h3>Revisión</h3>
-
-              <p>
-                Identificamos oportunidades.
-              </p>
-            </div>
-          </article>
-
-          <article className="contact-step">
-            <span>03</span>
-
-            <div>
-              <h3>Reunión</h3>
-
-              <p>
-                Alineamos alcance y objetivos.
-              </p>
-            </div>
-          </article>
-
-          <article className="contact-step">
-            <span>04</span>
-
-            <div>
-              <h3>Propuesta</h3>
-
-              <p>
-                Definimos próximos pasos.
-              </p>
-            </div>
-          </article>
-
+          <p className="contact-next__note">
+            Puedes escribirnos aunque todavía no tengas clara la solución. Basta con
+            contarnos qué está generando desorden, trabajo manual o falta de información.
+          </p>
         </aside>
 
-        <form className="contact-form">
+        <section className="contact-card" aria-label="Formulario de contacto HBT">
+          <div className="contact-card__header">
+            <span>
+              SOLICITUD INICIAL
+            </span>
 
-          <input
-            type="text"
-            placeholder="Nombre completo"
-          />
+            <h2>
+              Datos principales.
+            </h2>
 
-          <input
-            type="email"
-            placeholder="Correo electrónico"
-          />
+            <p>
+              Mientras más contexto nos entregues, mejor podremos orientar la primera conversación.
+            </p>
+          </div>
 
-          <input
-            type="text"
-            placeholder="Empresa"
-          />
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <div className="contact-form-grid">
+              <label className="contact-field">
+                <span>Nombre completo *</span>
 
-          <textarea
-            rows="5"
-            placeholder="Cuéntanos qué necesitas..."
-          />
+                <input
+                  type="text"
+                  name="nombre"
+                  placeholder="Tu nombre completo"
+                  autoComplete="name"
+                  required
+                />
+              </label>
 
-          <button type="submit">
-            Solicitar conversación
-          </button>
+              <label className="contact-field">
+                <span>Correo corporativo *</span>
 
-        </form>
+                <input
+                  type="email"
+                  name="correo"
+                  placeholder="correo@empresa.cl"
+                  autoComplete="email"
+                  required
+                />
+              </label>
 
+              <label className="contact-field">
+                <span>Empresa *</span>
+
+                <input
+                  type="text"
+                  name="empresa"
+                  placeholder="Nombre de la empresa"
+                  autoComplete="organization"
+                  required
+                />
+              </label>
+
+              <label className="contact-field">
+                <span>Teléfono</span>
+
+                <input
+                  type="tel"
+                  name="telefono"
+                  placeholder="+56 9 1234 5678"
+                  autoComplete="tel"
+                />
+              </label>
+
+              <label className="contact-field">
+                <span>Industria</span>
+
+                <select name="industria" defaultValue="">
+                  <option value="" disabled>
+                    Selecciona una industria
+                  </option>
+                  <option value="forestal">Forestal</option>
+                  <option value="manufactura">Manufactura</option>
+                  <option value="logistica">Logística</option>
+                  <option value="mineria">Minería</option>
+                  <option value="construccion">Construcción</option>
+                  <option value="servicios">Servicios</option>
+                  <option value="retail">Retail</option>
+                  <option value="pyme">Pyme</option>
+                  <option value="otra">Otra</option>
+                </select>
+              </label>
+            </div>
+
+            <fieldset className="contact-challenge">
+              <legend>
+                Tipo de desafío
+              </legend>
+
+              <div className="contact-challenge__options">
+                {desafios.map((desafio) => (
+                  <label key={desafio} className="contact-chip">
+                    <input
+                      type="checkbox"
+                      name="desafio"
+                      value={desafio}
+                    />
+
+                    <span>
+                      {desafio}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+
+            <label className="contact-field contact-field--full">
+              <span>¿Cómo podemos ayudarte? *</span>
+
+              <textarea
+                name="mensaje"
+                rows="5"
+                placeholder="Cuéntanos brevemente qué proceso, sistema, operación o reporte quieres ordenar."
+                required
+              />
+            </label>
+
+            {estadoEnvio === "success" && (
+              <p className="contact-form__status" role="status">
+                Solicitud registrada. Cuando conectemos el backend, este mensaje se enviará automáticamente.
+              </p>
+            )}
+
+            <div className="contact-form__footer">
+              <p>
+                Respuesta estimada en 24 a 48 horas hábiles.
+              </p>
+
+              <button type="submit" disabled={estadoEnvio === "sending"}>
+                {estadoEnvio === "sending" ? "Registrando solicitud..." : "Enviar solicitud"}
+              </button>
+            </div>
+          </form>
+        </section>
       </section>
-
     </main>
   );
 }

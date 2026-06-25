@@ -1,25 +1,55 @@
 :root {
-  --color-primary: #032B73;
-  --color-primary-hover: #043896;
+  --color-primary: #06101E;
+  --color-primary-hover: #032873;
+  --color-primary-soft: rgba(6, 16, 30, 0.05);
 
-  --color-gray: #6C7480;
-  --color-gray-light: #EEF1F5;
+  --color-accent: #032873;
+  --color-accent-hover: #043896;
+  --color-accent-soft: rgba(3, 40, 115, 0.08);
 
+  --color-dark: #06101E;
+  --color-dark-soft: #071723;
+  --color-dark-muted: #07111F;
+
+  --color-ink: #07111F;
   --color-black: #000000;
+  --color-gray: #5F6673;
+  --color-gray-soft: #6C7480;
   --color-white: #FFFFFF;
 
-  --color-bg: #F7F9FC;
-  --color-border: #E5EAF0;
+  --color-bg: #FFFFFF;
+  --color-bg-soft: #FFFFFF;
+  --color-border: #EDF2F7;
 
-  --container: 1320px;
+  --container: 1380px;
+  --container-wide: 1500px;
 
-  --radius-sm: 16px;
-  --radius-md: 24px;
-  --radius-lg: 34px;
-  --radius-xl: 46px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
 
-  --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.08);
-  --shadow-blue: 0 30px 90px rgba(3, 43, 115, 0.18);
+  --shadow-soft: 0 18px 60px rgba(7, 17, 31, 0.04);
+  --shadow-dark: 0 30px 90px rgba(6, 16, 30, 0.22);
+  --shadow-blue: 0 30px 90px rgba(3, 40, 115, 0.14);
 
-  --transition: 0.25s ease;
+  --font-family: "Montserrat", Arial, sans-serif;
+
+  --fs-eyebrow: 12px;
+  --fs-body-sm: 14px;
+  --fs-body: 16px;
+  --fs-body-lg: 17px;
+  --fs-card-title: 21px;
+  --fs-section-title: clamp(34px, 3.2vw, 54px);
+  --fs-page-title: clamp(42px, 3.6vw, 64px);
+  --fs-hero-title: clamp(42px, 3.6vw, 64px);
+
+  --lh-tight: 0.95;
+  --lh-title: 1.08;
+  --lh-body: 1.9;
+
+  --tracking-title: -0.035em;
+  --tracking-section: -1.2px;
+
+  --transition: 0.28s ease;
 }

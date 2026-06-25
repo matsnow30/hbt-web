@@ -2,32 +2,43 @@ import { useEffect } from "react";
 import "../styles/home.css";
 
 function Inicio() {
+  const problemas = [
+    "Procesos que dependen de planillas y correos.",
+    "Reportes que se preparan a mano y llegan tarde.",
+    "Solicitudes, documentos o tareas sin seguimiento claro.",
+    "Información repetida entre áreas o sistemas que no conversan.",
+  ];
+
   const capacidades = [
     {
-      titulo: "Ingeniería de procesos",
+      titulo: "Diagnóstico de procesos",
+      numero: "01",
       texto:
-        "Diseñamos procesos eficientes, sostenibles y alineados a la operación.",
+        "Levantamos cómo trabaja hoy la empresa, dónde se pierde tiempo y qué controles faltan.",
       icono: "/inicio/ingenieria-de-procesos.png",
       imagen: "/inicio/imagenes.png",
     },
     {
-      titulo: "Sistemas empresariales",
+      titulo: "Sistemas a medida",
+      numero: "02",
       texto:
-        "Construimos sistemas que fortalecen la gestión y continuidad operacional.",
+        "Desarrollamos plataformas internas para ordenar solicitudes, registros, tareas y responsables.",
       icono: "/inicio/sistemas-empresariales.png",
       imagen: "/inicio/winedatos.png",
     },
     {
-      titulo: "Datos & BI",
+      titulo: "Indicadores de gestión",
+      numero: "03",
       texto:
-        "Convertimos datos en información útil para apoyar decisiones.",
+        "Convertimos datos dispersos en tableros claros para ver avances, brechas y prioridades.",
       icono: "/inicio/datos-b-iconi.png",
       imagen: "/inicio/datos-bi.jpg",
     },
     {
       titulo: "Integración operacional",
+      numero: "04",
       texto:
-        "Conectamos sistemas y procesos para asegurar trazabilidad.",
+        "Conectamos áreas, plataformas y registros para reducir doble digitación y errores.",
       icono: "/inicio/integracion-de-datos.png",
       imagen: "/inicio/integracion-operacional.png",
     },
@@ -35,30 +46,30 @@ function Inicio() {
 
   const razones = [
     {
-      titulo: "Procesos confiables",
+      titulo: "Mirada operacional",
       texto:
-        "Diseñamos sobre estándares y operación real.",
+        "Partimos desde cómo trabaja realmente la empresa, no desde una solución predefinida.",
     },
     {
-      titulo: "Soluciones escalables",
+      titulo: "Criterio técnico",
       texto:
-        "Construimos sistemas preparados para crecer.",
+        "Priorizamos soluciones útiles, mantenibles y posibles de implementar.",
     },
     {
-      titulo: "Información accionable",
+      titulo: "Implementación acompañada",
       texto:
-        "Transformamos datos en decisiones.",
+        "Acompañamos desde el diagnóstico hasta la puesta en marcha con los equipos.",
     },
     {
-      titulo: "Acompañamiento técnico",
+      titulo: "Resultados visibles",
       texto:
-        "Trabajamos junto al cliente durante todo el proceso.",
+        "Buscamos mejoras que puedan observarse, medirse y gestionarse.",
     },
   ];
 
   const industrias = [
     { nombre: "Alimentos", imagen: "/inicio/alimentos.png" },
-    { nombre: "Vitivinícola", imagen: "/inicio/wine.png" },
+    { nombre: "Vitivinicola", imagen: "/inicio/wine.png" },
     { nombre: "Seguros", imagen: "/inicio/compañiaseguros.jpg" },
     { nombre: "Banca", imagen: "/inicio/banca.png" },
     { nombre: "Forestal", imagen: "/inicio/forestal.png" },
@@ -97,27 +108,43 @@ function Inicio() {
 
         <div className="home-hero__content reveal">
           <h1>
-            Transformamos procesos en sistemas, información y capacidad
-            operacional.
+            Ordenamos procesos con tecnología.
           </h1>
 
           <p>
-            Diseñamos e implementamos soluciones que conectan procesos, 
-            sistemas y datos para mejorar la operación.
+            Diagnosticamos cómo trabaja tu empresa y desarrollamos sistemas,
+            automatizaciones e indicadores para mejorar la gestión diaria.
           </p>
 
           <a href="/contacto" className="home-hero__cta">
-            ¿En qué podemos ayudarte?
+            Conversemos sobre tu operación
           </a>
         </div>
       </section>
 
-      <section className="home-section home-section--white">
-        <div className="home-section__header reveal">
-          <h2>¿CÓMO TRABAJAMOS?</h2>
+      <section className="home-section home-section--soft">
+        <div className="home-section__header home-section__header--simple reveal">
+          <span>PROBLEMAS QUE RESOLVEMOS</span>
+          <p>Detectamos tareas manuales, información dispersa y procesos sin seguimiento claro.</p>
         </div>
 
-        <div className="home-capabilities">
+        <div className="home-problems reveal">
+          {problemas.map((problema) => (
+            <article className="home-problem" key={problema}>
+              <span aria-hidden="true">✓</span>
+              <p>{problema}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="home-section home-section--white">
+        <div className="home-section__header home-section__header--simple reveal">
+          <span>CÓMO APORTAMOS</span>
+          <p>Levantamos la operación, definimos prioridades y construimos herramientas útiles para el equipo.</p>
+        </div>
+
+        <div className="home-capabilities home-capabilities--quiet">
           {capacidades.map((capacidad, index) => (
             <article
               className="home-capability reveal"
@@ -126,7 +153,7 @@ function Inicio() {
             >
               <div className="home-capability__heading">
                 <div className="home-capability__icon">
-                  <img src={capacidad.icono} alt="" aria-hidden="true" />
+                  <img src={capacidad.icono} alt="" aria-hidden="true" loading="lazy" />
                 </div>
 
                 <h3>{capacidad.titulo}</h3>
@@ -137,23 +164,21 @@ function Inicio() {
                   className="home-capability__image"
                   src={capacidad.imagen}
                   alt={capacidad.titulo}
+                  loading="lazy"
                 />
               </div>
-
-              <p>{capacidad.texto}</p>
             </article>
           ))}
         </div>
       </section>
 
       <section className="home-section home-section--soft">
-        <div className="home-why reveal">
-          <div className="home-why__content">
-            <span>¿POR QUÉ HBT?</span>
+        <div className="home-section__header home-section__header--simple reveal">
+          <span>POR QUÉ HBT</span>
+          <p>No proponemos tecnología antes de entender cómo trabaja tu empresa.</p>
+        </div>
 
-            <h2>Integramos ingeniería y tecnología para generar resultados.</h2>
-          </div>
-
+        <div className="home-why home-why--compact reveal">
           <div className="home-why__pillars">
             {razones.map((razon, index) => (
               <article
@@ -162,7 +187,7 @@ function Inicio() {
                 key={razon.titulo}
               >
                 <span>
-                  <img src="/inicio/check.png" alt="" aria-hidden="true" />
+                  <img src="/inicio/check.png" alt="" aria-hidden="true" loading="lazy" />
                 </span>
 
                 <div>
@@ -174,14 +199,15 @@ function Inicio() {
           </div>
 
           <div className="home-why__image">
-            <img src="/inicio/mesa.png" alt="Análisis de procesos HBT" />
+            <img src="/inicio/mesa.png" alt="Analisis de procesos HBT" loading="lazy" />
           </div>
         </div>
       </section>
 
       <section className="home-section home-section--white">
-        <div className="home-section__header reveal">
-          <h2>Sectores donde impulsamos transformación operacional</h2>
+        <div className="home-section__header home-section__header--simple reveal">
+          <span>EXPERIENCIA APLICABLE</span>
+          <p>Adaptamos el enfoque según el rubro, la operación y la madurez digital de cada empresa.</p>
         </div>
 
         <div className="home-industries reveal">
@@ -191,7 +217,7 @@ function Inicio() {
               className="home-industry"
               key={industria.nombre}
             >
-              <img src={industria.imagen} alt={industria.nombre} />
+              <img src={industria.imagen} alt={industria.nombre} loading="lazy" />
               <span>{industria.nombre}</span>
             </a>
           ))}

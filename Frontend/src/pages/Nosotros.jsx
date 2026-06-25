@@ -116,13 +116,13 @@ function Nosotros() {
           <span className="about__eyebrow">NOSOTROS</span>
 
           <h1>
-            Construimos tecnología con <strong>propósito.</strong>
+            Unimos procesos y tecnologia para resolver problemas reales.
           </h1>
 
           <p>
-            Creamos soluciones de ingeniería y tecnología para transformar
-            procesos, impulsar organizaciones y generar impacto más allá del
-            negocio.
+            Somos una consultora chilena que ayuda a empresas a ordenar su
+            operacion, reducir trabajo manual y mejorar la gestion con sistemas,
+            automatizacion e indicadores.
           </p>
 
           <a href="#historia" className="about__scroll-link">

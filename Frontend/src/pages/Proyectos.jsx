@@ -1,22 +1,24 @@
+import { Link } from "react-router-dom";
+
 function Proyectos() {
   const proyectos = [
     {
-      titulo: "Portal de gestión empresarial",
-      industria: "Servicios profesionales",
+      titulo: "Seguimiento de solicitudes internas",
+      industria: "Caso tipo",
       texto:
-        "Diseño de plataforma web para centralizar información, usuarios, documentos y procesos internos.",
+        "Portal para registrar solicitudes, asignar responsables, controlar estados y evitar seguimiento por correo o planillas.",
     },
     {
-      titulo: "Dashboard de indicadores",
-      industria: "Control de gestión",
+      titulo: "Tablero de gestión para jefaturas",
+      industria: "Caso tipo",
       texto:
-        "Construcción de paneles ejecutivos para visualizar desempeño, productividad y resultados operacionales.",
+        "Indicadores para ver avance, cumplimiento, productividad y atrasos sin preparar reportes manuales cada semana.",
     },
     {
-      titulo: "Automatización documental",
-      industria: "Operaciones",
+      titulo: "Automatización de aprobaciones",
+      industria: "Caso tipo",
       texto:
-        "Digitalización de tareas repetitivas para reducir tiempos, errores manuales y carga administrativa.",
+        "Flujo digital para ordenar documentos, aprobaciones, alertas y trazabilidad de cada etapa del proceso.",
     },
   ];
 
@@ -26,12 +28,12 @@ function Proyectos() {
         <span>PROYECTOS</span>
 
         <h1>
-          Proyectos tecnológicos orientados a resultados medibles.
+          Casos tipo de aplicación.
         </h1>
 
         <p>
-          Desarrollamos soluciones para mejorar gestión, productividad,
-          análisis de información y continuidad operacional.
+          Estos ejemplos muestran cómo una necesidad de gestión puede convertirse
+          en una solución técnica concreta, medible y fácil de usar por el equipo.
         </p>
       </section>
 
@@ -44,9 +46,9 @@ function Proyectos() {
 
             <p>{proyecto.texto}</p>
 
-            <button>
-              Ver proyecto
-            </button>
+            <Link to="/contacto">
+              Evaluar un caso similar
+            </Link>
           </article>
         ))}
       </section>

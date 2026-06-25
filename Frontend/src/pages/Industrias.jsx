@@ -1,34 +1,36 @@
+import { Link } from "react-router-dom";
+
 function Industrias() {
   const industrias = [
     {
       titulo: "Seguros",
       texto:
-        "Soluciones para gestión de clientes, pólizas, documentación, indicadores y automatización operativa.",
+        "Gestión de clientes, pólizas, documentos, indicadores y automatización de procesos administrativos.",
     },
     {
       titulo: "Retail",
       texto:
-        "Herramientas para control comercial, reportes, productividad, procesos internos e integración de datos.",
+        "Control comercial, reportes, productividad, procesos internos e integración de datos.",
     },
     {
       titulo: "Logística",
       texto:
-        "Sistemas para seguimiento, control operativo, rutas, gestión documental y análisis de desempeño.",
+        "Seguimiento operativo, rutas, gestión documental, control de estados y análisis de desempeño.",
     },
     {
       titulo: "Servicios profesionales",
       texto:
-        "Portales, dashboards y automatizaciones para empresas que administran clientes, proyectos y operaciones.",
+        "Portales, tableros y automatizaciones para administrar clientes, proyectos y operaciones internas.",
     },
     {
       titulo: "Educación",
       texto:
-        "Plataformas para gestión, seguimiento, reportabilidad, procesos administrativos y análisis institucional.",
+        "Plataformas para gestión administrativa, seguimiento, reportabilidad y análisis institucional.",
     },
     {
       titulo: "Pymes en crecimiento",
       texto:
-        "Soluciones escalables para ordenar información, digitalizar procesos y profesionalizar la gestión.",
+        "Soluciones para ordenar información, digitalizar procesos y profesionalizar la gestión.",
     },
   ];
 
@@ -38,12 +40,12 @@ function Industrias() {
         <span>INDUSTRIAS</span>
 
         <h1>
-          Tecnología aplicada a los desafíos reales de cada sector.
+          Industrias donde aportamos valor.
         </h1>
 
         <p>
-          Adaptamos soluciones de ingeniería, software, datos y automatización
-          según la operación, madurez digital y necesidades de cada industria.
+          Cada empresa tiene procesos, ritmos y restricciones distintas. Adaptamos
+          el enfoque técnico según su realidad, madurez digital y forma de trabajar.
         </p>
       </section>
 
@@ -56,9 +58,9 @@ function Industrias() {
 
             <p>{industria.texto}</p>
 
-            <button>
-              Ver industria
-            </button>
+            <Link to="/contacto">
+              Conversar sobre esta industria
+            </Link>
           </article>
         ))}
       </section>

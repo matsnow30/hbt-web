@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
+import ScrollToTop from "../components/ScrollToTop.jsx";
 
 import Inicio from "../pages/Inicio.jsx";
 import Nosotros from "../pages/Nosotros.jsx";
@@ -20,13 +21,17 @@ import Accesibilidad from "../pages/Accesibilidad.jsx";
 function Router() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
+
       <Header />
 
       <Routes>
         <Route path="/" element={<Inicio />} />
         <Route path="/nosotros" element={<Nosotros />} />
         <Route path="/servicios" element={<Servicios />} />
+        <Route path="/soluciones" element={<Soluciones />} />
         <Route path="/proyectos" element={<Proyectos />} />
+        <Route path="/industrias" element={<Industrias />} />
         <Route path="/contacto" element={<Contacto />} />
 
         <Route path="/privacidad" element={<Privacidad />} />

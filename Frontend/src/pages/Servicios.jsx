@@ -1,85 +1,106 @@
 const servicios = [
   {
-    id: "ingenieria-gestion",
-    area: "Ingeniería operacional",
-    titulo: "Ingeniería y gestión",
+    id: "diagnostico-procesos",
+    area: "Orden y control",
+    titulo: "Diagnóstico de procesos",
     texto:
-      "Diseñamos soluciones técnicas y operacionales para mejorar desempeño, continuidad y capacidad de crecimiento.",
-    entregables: ["Diagnóstico operativo", "Diseño de flujos", "Plan de mejora"],
-    resultado: "Operaciones más claras, medibles y sostenibles."
+      "Revisamos cómo trabaja hoy la empresa, qué tareas se repiten, dónde falta información y qué controles conviene mejorar.",
+    entregables: ["Mapa del proceso", "Problemas priorizados", "Plan de mejora"],
+    resultado: "Una operación más clara antes de invertir en sistemas.",
   },
   {
-    id: "desarrollo-software",
-    area: "Plataformas empresariales",
-    titulo: "Desarrollo de software",
+    id: "sistemas-medida",
+    area: "Software interno",
+    titulo: "Sistemas a medida",
     texto:
-      "Construimos sistemas empresariales adaptados a procesos reales, con foco en escalabilidad, seguridad y mantenibilidad.",
-    entregables: ["Aplicaciones web", "Portales internos", "Sistemas a medida"],
-    resultado: "Tecnología alineada al funcionamiento de la empresa."
+      "Creamos plataformas para administrar solicitudes, documentos, clientes, tareas, inventarios o procesos propios de la empresa.",
+    entregables: ["Aplicación web", "Roles de usuario", "Registro y seguimiento"],
+    resultado: "Herramientas pensadas para la forma real de trabajar del equipo.",
   },
   {
-    id: "automatizacion-procesos",
-    area: "Optimización digital",
-    titulo: "Automatización de procesos",
+    id: "automatizacion-tareas",
+    area: "Menos trabajo manual",
+    titulo: "Automatización de tareas",
     texto:
-      "Reducimos tareas manuales y errores operativos mediante integración tecnológica, reglas de negocio y flujos automatizados.",
-    entregables: ["Flujos digitales", "Alertas operativas", "Validaciones automáticas"],
-    resultado: "Procesos más rápidos, controlados y trazables."
+      "Reducimos digitación, correos repetidos, aprobaciones manuales y alertas que hoy dependen de una persona.",
+    entregables: ["Flujos de trabajo", "Alertas automáticas", "Reglas de negocio"],
+    resultado: "Procesos más rápidos, trazables y con menos errores.",
   },
   {
     id: "integracion-sistemas",
-    area: "Arquitectura tecnológica",
-    titulo: "Integración de sistemas",
+    area: "Información conectada",
+    titulo: "Integración entre sistemas",
     texto:
-      "Conectamos plataformas, bases de datos y fuentes de información para mejorar continuidad operacional y evitar duplicidad.",
-    entregables: ["APIs", "Conectores", "Sincronización de datos"],
-    resultado: "Información consistente entre áreas y plataformas."
+      "Conectamos fuentes de datos, plataformas y registros para evitar doble ingreso e información inconsistente.",
+    entregables: ["Conectores", "Sincronización de datos", "Validaciones"],
+    resultado: "Información más confiable entre áreas, sistemas y equipos.",
   },
   {
-    id: "datos-business-intelligence",
-    area: "Datos & BI",
-    titulo: "Datos & Business Intelligence",
+    id: "tableros-indicadores",
+    area: "Gestión con datos",
+    titulo: "Tableros e indicadores",
     texto:
-      "Transformamos información operativa en visualizaciones ejecutivas para apoyar decisiones con datos claros y oportunos.",
-    entregables: ["Modelos de datos", "Tableros ejecutivos", "Indicadores de gestión"],
-    resultado: "Decisiones basadas en información confiable."
+      "Ordenamos información operativa para mostrar indicadores de avance, cumplimiento, productividad y puntos críticos.",
+    entregables: ["Modelo de datos", "Tableros de gestión", "Indicadores clave"],
+    resultado: "Mejores decisiones con información oportuna y visible.",
   },
   {
-    id: "transformacion-digital",
-    area: "Consultoría tecnológica",
-    titulo: "Consultoría en transformación digital",
+    id: "acompanamiento",
+    area: "Puesta en marcha",
+    titulo: "Acompañamiento técnico",
     texto:
-      "Evaluamos procesos, sistemas y oportunidades de mejora para diseñar iniciativas tecnológicas sostenibles.",
-    entregables: ["Roadmap digital", "Priorización técnica", "Acompañamiento"],
-    resultado: "Evolución tecnológica ordenada y con impacto real."
-  }
+      "Apoyamos la implementación, capacitación inicial y mejora posterior para que la solución sea usada por el equipo.",
+    entregables: ["Ruta de implementación", "Documentación", "Soporte inicial"],
+    resultado: "Una adopción más ordenada y con menor resistencia interna.",
+  },
+];
+
+const enfoque = [
+  {
+    valor: "01",
+    titulo: "Entendemos antes de proponer",
+    texto:
+      "No recomendamos tecnología sin revisar primero el proceso, las personas involucradas y la información disponible.",
+  },
+  {
+    valor: "02",
+    titulo: "Definimos entregables concretos",
+    texto:
+      "Cada proyecto queda con alcance, prioridades y resultados esperados para evitar soluciones poco claras.",
+  },
+  {
+    valor: "03",
+    titulo: "Acompañamos la puesta en marcha",
+    texto:
+      "Trabajamos junto al equipo cliente para que la solución se incorpore a la operación diaria.",
+  },
 ];
 
 const metodologia = [
   {
     numero: "01",
-    titulo: "Diagnóstico",
+    titulo: "Levantamiento",
     texto:
-      "Levantamos procesos, sistemas, datos y puntos críticos antes de proponer una solución."
+      "Conversamos con los equipos, revisamos el proceso actual y detectamos tareas manuales, brechas y riesgos.",
   },
   {
     numero: "02",
-    titulo: "Diseño técnico",
+    titulo: "Diseño de solución",
     texto:
-      "Definimos arquitectura, alcance, prioridades y entregables con una mirada escalable."
+      "Definimos qué se construirá, qué datos se necesitan, quiénes lo usarán y cómo se medirá el resultado.",
   },
   {
     numero: "03",
-    titulo: "Implementación",
+    titulo: "Desarrollo e integración",
     texto:
-      "Construimos, integramos y validamos la solución cuidando continuidad operacional."
+      "Construimos la herramienta, conectamos información cuando corresponde y validamos con usuarios reales.",
   },
   {
     numero: "04",
-    titulo: "Mejora continua",
+    titulo: "Puesta en marcha",
     texto:
-      "Acompañamos la evolución del sistema para mantener rendimiento, control y valor."
-  }
+      "Acompañamos el uso inicial, ajustamos detalles y dejamos una base preparada para seguir mejorando.",
+  },
 ];
 
 function Servicios() {
@@ -89,18 +110,28 @@ function Servicios() {
         <div className="services-hero__content">
           <span className="services-hero__eyebrow">SERVICIOS HBT</span>
 
-          <h1>Ingeniería y tecnología orientadas a resultados.</h1>
+          <h1>Servicios para ordenar tu operación.</h1>
 
           <p>
-            Diseñamos soluciones que conectan procesos, sistemas y datos para mejorar eficiencia operativa,
-            control interno y capacidad de crecimiento.
+            Reducimos trabajo manual, mejoramos el control y conectamos información
+            mediante sistemas, automatizaciones e indicadores claros.
           </p>
         </div>
 
         <div className="services-hero__panel" aria-label="Enfoque de trabajo HBT">
-          <span>Engineering + Technology</span>
-          <strong>Soluciones sostenibles para operación, datos y gestión.</strong>
+          <span>Forma de trabajo</span>
+          <strong>Primero entendemos la operación. Después construimos la solución.</strong>
         </div>
+      </section>
+
+      <section className="services-proof" aria-label="Forma de trabajo HBT">
+        {enfoque.map((item) => (
+          <article className="services-proof__item" key={item.titulo}>
+            <span>{item.valor}</span>
+            <h2>{item.titulo}</h2>
+            <p>{item.texto}</p>
+          </article>
+        ))}
       </section>
 
       <section className="services-grid" aria-label="Listado de servicios HBT">
@@ -129,7 +160,7 @@ function Servicios() {
               <span>{servicio.resultado}</span>
 
               <a href="/contacto" aria-label={`Consultar por ${servicio.titulo}`}>
-                Conocer servicio →
+                Solicitar diagnóstico
               </a>
             </div>
           </article>
@@ -138,13 +169,13 @@ function Servicios() {
 
       <section className="services-method">
         <div className="services-method__intro">
-          <span>METODOLOGÍA</span>
+          <span>MÉTODO DE TRABAJO</span>
 
-          <h2>Un proceso claro para soluciones reales.</h2>
+          <h2>Un proceso simple.</h2>
 
           <p>
-            Cada iniciativa parte desde la operación del cliente y avanza con criterios técnicos,
-            documentación clara y foco en resultados medibles.
+            Cada iniciativa parte desde la operación del cliente y avanza con
+            prioridades claras, validación con usuarios y foco en resultados medibles.
           </p>
         </div>
 
@@ -162,10 +193,10 @@ function Servicios() {
       <section className="services-cta">
         <div>
           <span>HBT ENGINEERING & TECHNOLOGY</span>
-          <h2>Conversemos sobre el próximo desafío operacional o tecnológico de tu empresa.</h2>
+          <h2>Hablemos de lo que hoy frena a tu empresa.</h2>
         </div>
 
-        <a href="/contacto">Solicitar asesoría</a>
+        <a href="/contacto">Agendar conversación inicial</a>
       </section>
     </main>
   );
