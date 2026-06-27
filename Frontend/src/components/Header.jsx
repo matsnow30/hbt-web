@@ -10,7 +10,7 @@ function Header() {
     <header className="header">
       <div className="header-container">
         <NavLink to="/" className="header-logo" onClick={closeMenu}>
-          <img src="/logo_hbt.png" alt="HBT Engineering & Technology" />
+          <img src="/logo_hbt.avif" alt="HBT Engineering & Technology" />
         </NavLink>
 
         <button
@@ -29,8 +29,6 @@ function Header() {
           <NavLink to="/" onClick={closeMenu}>Inicio</NavLink>
           <NavLink to="/nosotros" onClick={closeMenu}>Nosotros</NavLink>
           <NavLink to="/servicios" onClick={closeMenu}>Servicios</NavLink>
-          <NavLink to="/soluciones" onClick={closeMenu}>Soluciones</NavLink>
-          <NavLink to="/proyectos" onClick={closeMenu}>Proyectos</NavLink>
           <NavLink to="/contacto" onClick={closeMenu}>Contacto</NavLink>
         </nav>
 

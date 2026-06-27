@@ -4,11 +4,12 @@ function Contacto() {
   const [estadoEnvio, setEstadoEnvio] = useState("idle");
 
   const desafios = [
-    "Diagnóstico de procesos",
-    "Sistema a medida",
-    "Automatización de tareas",
-    "Tableros e indicadores",
-    "Integración entre sistemas",
+    "Análisis operacional",
+    "Mejora de procesos",
+    "Software a medida",
+    "Automatización",
+    "Indicadores y datos",
+    "Planificación estratégica",
     "Otro",
   ];
 
@@ -53,8 +54,8 @@ function Contacto() {
         </h1>
 
         <p>
-          Describe el proceso, sistema o reporte que quieres mejorar. Revisaremos
-          tu caso y te contactaremos para coordinar una primera conversación.
+          Describe el proceso, indicador, sistema o decisión que quieres mejorar.
+          Revisaremos tu caso para entender la operación antes de proponer.
         </p>
       </section>
 
@@ -74,7 +75,7 @@ function Contacto() {
 
           <p className="contact-next__note">
             Puedes escribirnos aunque todavía no tengas clara la solución. Basta con
-            contarnos qué está generando desorden, trabajo manual o falta de información.
+            contarnos que esta generando desorden, trabajo manual, errores o falta de informacion.
           </p>
         </aside>
 
@@ -190,7 +191,7 @@ function Contacto() {
               <textarea
                 name="mensaje"
                 rows="5"
-                placeholder="Cuéntanos brevemente qué proceso, sistema, operación o reporte quieres ordenar."
+                placeholder="Cuéntanos brevemente qué proceso, indicador, sistema u operación quieres mejorar."
                 required
               />
             </label>

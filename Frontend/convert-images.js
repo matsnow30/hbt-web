@@ -2,33 +2,42 @@ import sharp from "sharp";
 import fs from "fs";
 import path from "path";
 
-const inputFolder = "./public/images";
-const outputFolder = "./public/images";
-
+const inputFolder = "./public";
 const allowedExtensions = [".png", ".jpg", ".jpeg"];
 
+function getImageFiles(folder) {
+  const entries = fs.readdirSync(folder, { withFileTypes: true });
+
+  return entries.flatMap((entry) => {
+    const fullPath = path.join(folder, entry.name);
+
+    if (entry.isDirectory()) {
+      return getImageFiles(fullPath);
+    }
+
+    const extension = path.extname(entry.name).toLowerCase();
+    return allowedExtensions.includes(extension) ? [fullPath] : [];
+  });
+}
+
 async function convertImages() {
-  const files = fs.readdirSync(inputFolder);
+  const files = getImageFiles(inputFolder);
 
-  for (const file of files) {
-    const extension = path.extname(file).toLowerCase();
+  for (const inputPath of files) {
+    const extension = path.extname(inputPath).toLowerCase();
+    const outputPath = path.join(
+      path.dirname(inputPath),
+      `${path.basename(inputPath, extension)}.avif`
+    );
 
-    if (!allowedExtensions.includes(extension)) continue;
+    await sharp(inputPath).avif({ quality: 70 }).toFile(outputPath);
 
-    const inputPath = path.join(inputFolder, file);
-    const outputName = `${path.basename(file, extension)}.avif`;
-    const outputPath = path.join(outputFolder, outputName);
-
-    await sharp(inputPath)
-      .avif({ quality: 70 })
-      .toFile(outputPath);
-
-    console.log(`Convertida: ${file} → ${outputName}`);
+    console.log(`Converted: ${inputPath} -> ${outputPath}`);
   }
 
-  console.log("Listo. Imágenes convertidas a AVIF.");
+  console.log("Done. Images converted to AVIF.");
 }
 
 convertImages().catch((error) => {
-  console.error("Error convirtiendo imágenes:", error);
+  console.error("Error converting images:", error);
 });

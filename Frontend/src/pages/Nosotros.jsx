@@ -3,31 +3,31 @@ import { Link } from "react-router-dom";
 
 const timelineItems = [
   {
-    icon: "/nosotros/inicio.png",
+    icon: "/nosotros/inicio.avif",
     title: "18 junio 2026",
     subtitle: "La idea",
     text: "Nace la convicción de que la tecnología puede construir futuro y proteger nuestro entorno al mismo tiempo.",
   },
   {
-    icon: "/nosotros/construccion.png",
+    icon: "/nosotros/construccion.avif",
     title: "Construcción",
     subtitle: "Identidad y propósito",
     text: "Definimos una empresa basada en ingeniería, tecnología aplicada y una forma distinta de generar valor.",
   },
   {
-    icon: "/nosotros/primeras-soluciones.png",
-    title: "Soluciones reales",
+    icon: "/nosotros/primeras-soluciones.avif",
+    title: "Mejoras aplicadas",
     subtitle: "Ingeniería aplicada",
-    text: "Creamos soluciones que optimizan procesos, conectan datos y mejoran la operación de las organizaciones.",
+    text: "Optimizamos procesos, conectamos datos y mejoramos la operación de las organizaciones.",
   },
   {
-    icon: "/nosotros/crecimiento.png",
+    icon: "/nosotros/crecimiento.avif",
     title: "Crecimiento",
     subtitle: "Con propósito",
     text: "Cada avance busca fortalecer empresas sin olvidar la responsabilidad con el entorno que nos sostiene.",
   },
   {
-    icon: "/nosotros/impacto-positivo.png",
+    icon: "/nosotros/impacto-positivo.avif",
     title: "Impacto positivo",
     subtitle: "Valor compartido",
     text: "Trabajamos para que cada proyecto deje una huella positiva en las personas, las empresas y Chile.",
@@ -36,42 +36,42 @@ const timelineItems = [
 
 const principles = [
   {
-    icon: "/nosotros/procesosantequeherramientas.png",
+    icon: "/nosotros/procesosantequeherramientas.avif",
     title: "Procesos antes que herramientas",
-    text: "Diseñamos soluciones sólidas desde la raíz, priorizando método, estándares y buenas prácticas.",
+    text: "Primero entendemos la operación real; después definimos la tecnología que corresponde.",
   },
   {
-    icon: "/nosotros/tecnologiaconproposito.png",
+    icon: "/nosotros/tecnologiaconproposito.avif",
     title: "Tecnología con propósito",
-    text: "Usamos la tecnología para generar valor real, eficiencia operativa y decisiones más conscientes.",
+    text: "Construimos sistemas, automatizaciones e indicadores solo cuando aportan valor operativo.",
   },
   {
-    icon: "/nosotros/usuario.png",
+    icon: "/nosotros/usuario.avif",
     title: "Diseño orientado al usuario",
-    text: "Creamos experiencias claras, intuitivas y útiles para las personas que usan nuestras soluciones.",
+    text: "Creamos herramientas claras para quienes ejecutan, controlan y deciden cada día.",
   },
   {
-    icon: "/nosotros/impacto-sostenible.png",
+    icon: "/nosotros/impacto-sostenible.avif",
     title: "Impacto sostenible",
-    text: "Buscamos resultados que perduren y contribuyan al bienestar del entorno.",
+    text: "Priorizamos mejoras medibles, mantenibles y alineadas al crecimiento del negocio.",
   },
 ];
 
 const commitments = [
   {
-    icon: "/nosotros/respetamosnuestroecosistema.png",
+    icon: "/nosotros/respetamosnuestroecosistema.avif",
     title: "Respetamos nuestro ecosistema",
   },
   {
-    icon: "/nosotros/corazon.png",
+    icon: "/nosotros/corazon.avif",
     title: "Apoyamos la conservación",
   },
   {
-    icon: "/nosotros/valorconconciencia.png",
+    icon: "/nosotros/valorconconciencia.avif",
     title: "Generamos valor con conciencia",
   },
   {
-    icon: "/nosotros/devolver.png",
+    icon: "/nosotros/devolver.avif",
     title: "Devolvemos parte del éxito",
   },
 ];
@@ -106,7 +106,16 @@ function Nosotros() {
 
     elements.forEach((element) => observer.observe(element));
 
-    return () => observer.disconnect();
+    const fallback = window.setTimeout(() => {
+      elements.forEach((element) => {
+        element.classList.add("is-visible");
+      });
+    }, 900);
+
+    return () => {
+      window.clearTimeout(fallback);
+      observer.disconnect();
+    };
   }, []);
 
   return (
@@ -116,13 +125,13 @@ function Nosotros() {
           <span className="about__eyebrow">NOSOTROS</span>
 
           <h1>
-            Unimos procesos y tecnologia para resolver problemas reales.
+            Observamos procesos, medimos con datos y construimos tecnología a medida.
           </h1>
 
           <p>
-            Somos una consultora chilena que ayuda a empresas a ordenar su
-            operacion, reducir trabajo manual y mejorar la gestion con sistemas,
-            automatizacion e indicadores.
+             Somos una consultora chilena que ayuda a empresas a entender cómo
+            trabajan, definir mejoras concretas y desarrollar sistemas,
+            automatizaciones e indicadores para gestionar mejor.
           </p>
 
           <a href="#historia" className="about__scroll-link">
@@ -133,7 +142,7 @@ function Nosotros() {
 
         <div className="about__hero-image about-reveal" aria-hidden="true">
           <img
-            src="/nosotros/edificio.jpg"
+            src="/nosotros/edificio.avif"
             alt=""
           />
         </div>
@@ -188,7 +197,7 @@ function Nosotros() {
         </aside>
 
         <div className="about__story-image about-reveal">
-          <img src="/nosotros/oficina.jpg" alt="Espacio de trabajo moderno" />
+          <img src="/nosotros/oficina.avif" alt="Espacio de trabajo moderno" />
           <div className="about__story-image-text">
             Tecnología que genera <strong>valor real.</strong>
           </div>
@@ -232,7 +241,7 @@ function Nosotros() {
       <section className="about__commitment about-reveal">
         <div className="about__commitment-image">
           <img
-            src="/nosotros/pinguino-humboldt.png"
+            src="/nosotros/pinguino-humboldt.avif"
             alt="Pingüino de Humboldt en su hábitat natural"
           />
         </div>
@@ -278,10 +287,9 @@ function Nosotros() {
             ingeniería que generen valor real y sostenible.
           </h2>
           <p>
-            Combinamos conocimiento, experiencia y tecnología para transformar
-            procesos, optimizar operaciones y potenciar resultados, con un
-            compromiso permanente hacia las personas, las organizaciones y el
-            entorno.
+            Observamos procesos, analizamos datos y desarrollamos tecnología a
+            medida para mejorar la operación, los indicadores y la toma de
+            decisiones.
           </p>
         </article>
 

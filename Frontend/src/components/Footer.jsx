@@ -3,36 +3,34 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="footer" aria-label="Pie de pagina">
+    <footer className="footer" aria-label="Pie de página">
       <div className="footer__container">
         <div className="footer__grid">
           <div className="footer__brand">
             <img
-              src="/logo_footer.png"
+              src="/logo_footer.avif"
               alt="HBT Engineering & Technology Ltda."
               className="footer__logo"
               loading="lazy"
             />
 
             <p>
-              Consultoria tecnologica para procesos, sistemas, automatizacion e indicadores.
+              Consultoría tecnológica para procesos, sistemas, automatización e indicadores.
             </p>
           </div>
 
           <nav className="footer__column" aria-label="Servicios">
             <h3>Servicios</h3>
-            <Link to="/servicios">Diagnostico de procesos</Link>
+            <Link to="/servicios">Diagnóstico de procesos</Link>
             <Link to="/servicios">Sistemas a medida</Link>
-            <Link to="/servicios">Automatizacion</Link>
+            <Link to="/servicios">Automatización</Link>
             <Link to="/servicios">Tableros e indicadores</Link>
           </nav>
 
           <nav className="footer__column" aria-label="Empresa">
             <h3>Empresa</h3>
             <Link to="/nosotros">Nosotros</Link>
-            <Link to="/soluciones">Soluciones</Link>
-            <Link to="/proyectos">Proyectos</Link>
-            <Link to="/industrias">Industrias</Link>
+            <Link to="/servicios">Servicios</Link>
             <Link to="/contacto">Contacto</Link>
           </nav>
 

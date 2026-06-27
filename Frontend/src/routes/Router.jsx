@@ -7,9 +7,6 @@ import ScrollToTop from "../components/ScrollToTop.jsx";
 import Inicio from "../pages/Inicio.jsx";
 import Nosotros from "../pages/Nosotros.jsx";
 import Servicios from "../pages/Servicios.jsx";
-import Soluciones from "../pages/Soluciones.jsx";
-import Proyectos from "../pages/Proyectos.jsx";
-import Industrias from "../pages/Industrias.jsx";
 import Contacto from "../pages/Contacto.jsx";
 
 import Privacidad from "../pages/Privacidad.jsx";
@@ -29,9 +26,6 @@ function Router() {
         <Route path="/" element={<Inicio />} />
         <Route path="/nosotros" element={<Nosotros />} />
         <Route path="/servicios" element={<Servicios />} />
-        <Route path="/soluciones" element={<Soluciones />} />
-        <Route path="/proyectos" element={<Proyectos />} />
-        <Route path="/industrias" element={<Industrias />} />
         <Route path="/contacto" element={<Contacto />} />
 
         <Route path="/privacidad" element={<Privacidad />} />

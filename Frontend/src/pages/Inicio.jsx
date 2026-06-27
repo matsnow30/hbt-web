@@ -15,32 +15,32 @@ function Inicio() {
       numero: "01",
       texto:
         "Levantamos cómo trabaja hoy la empresa, dónde se pierde tiempo y qué controles faltan.",
-      icono: "/inicio/ingenieria-de-procesos.png",
-      imagen: "/inicio/imagenes.png",
+      icono: "/inicio/ingenieria-de-procesos.avif",
+      imagen: "/inicio/imagenes.avif",
     },
     {
       titulo: "Sistemas a medida",
       numero: "02",
       texto:
         "Desarrollamos plataformas internas para ordenar solicitudes, registros, tareas y responsables.",
-      icono: "/inicio/sistemas-empresariales.png",
-      imagen: "/inicio/winedatos.png",
+      icono: "/inicio/sistemas-empresariales.avif",
+      imagen: "/inicio/winedatos.avif",
     },
     {
       titulo: "Indicadores de gestión",
       numero: "03",
       texto:
         "Convertimos datos dispersos en tableros claros para ver avances, brechas y prioridades.",
-      icono: "/inicio/datos-b-iconi.png",
-      imagen: "/inicio/datos-bi.jpg",
+      icono: "/inicio/datos-b-iconi.avif",
+      imagen: "/inicio/datos-bi.avif",
     },
     {
       titulo: "Integración operacional",
       numero: "04",
       texto:
         "Conectamos áreas, plataformas y registros para reducir doble digitación y errores.",
-      icono: "/inicio/integracion-de-datos.png",
-      imagen: "/inicio/integracion-operacional.png",
+      icono: "/inicio/integracion-de-datos.avif",
+      imagen: "/inicio/integracion-operacional.avif",
     },
   ];
 
@@ -68,14 +68,14 @@ function Inicio() {
   ];
 
   const industrias = [
-    { nombre: "Alimentos", imagen: "/inicio/alimentos.png" },
-    { nombre: "Vitivinicola", imagen: "/inicio/wine.png" },
-    { nombre: "Seguros", imagen: "/inicio/compañiaseguros.jpg" },
-    { nombre: "Banca", imagen: "/inicio/banca.png" },
-    { nombre: "Forestal", imagen: "/inicio/forestal.png" },
-    { nombre: "Minería", imagen: "/inicio/mineria.jpg" },
-    { nombre: "Pymes", imagen: "/inicio/pyme.png" },
-    { nombre: "Construcción", imagen: "/inicio/construccion.jpg" },
+    { nombre: "Alimentos", imagen: "/inicio/alimentos.avif" },
+    { nombre: "Vitivinicola", imagen: "/inicio/wine.avif" },
+    { nombre: "Seguros", imagen: "/inicio/compañiaseguros.avif" },
+    { nombre: "Banca", imagen: "/inicio/banca.avif" },
+    { nombre: "Forestal", imagen: "/inicio/forestal.avif" },
+    { nombre: "Minería", imagen: "/inicio/mineria.avif" },
+    { nombre: "Pymes", imagen: "/inicio/pyme.avif" },
+    { nombre: "Construcción", imagen: "/inicio/construccion.avif" },
   ];
 
   useEffect(() => {
@@ -98,7 +98,16 @@ function Inicio() {
 
     elements.forEach((element) => observer.observe(element));
 
-    return () => observer.disconnect();
+    const fallback = window.setTimeout(() => {
+      elements.forEach((element) => {
+        element.classList.add("is-visible");
+      });
+    }, 900);
+
+    return () => {
+      window.clearTimeout(fallback);
+      observer.disconnect();
+    };
   }, []);
 
   return (
@@ -187,7 +196,7 @@ function Inicio() {
                 key={razon.titulo}
               >
                 <span>
-                  <img src="/inicio/check.png" alt="" aria-hidden="true" loading="lazy" />
+                  <img src="/inicio/check.avif" alt="" aria-hidden="true" loading="lazy" />
                 </span>
 
                 <div>
@@ -199,7 +208,7 @@ function Inicio() {
           </div>
 
           <div className="home-why__image">
-            <img src="/inicio/mesa.png" alt="Analisis de procesos HBT" loading="lazy" />
+            <img src="/inicio/mesa.avif" alt="Análisis de procesos HBT" loading="lazy" />
           </div>
         </div>
       </section>
@@ -213,7 +222,7 @@ function Inicio() {
         <div className="home-industries reveal">
           {industrias.map((industria) => (
             <a
-              href="/industrias"
+              href="/contacto"
               className="home-industry"
               key={industria.nombre}
             >
