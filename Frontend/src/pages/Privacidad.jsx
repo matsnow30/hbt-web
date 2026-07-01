@@ -159,7 +159,7 @@ function Privacidad() {
 
         <h2>8. Almacenamiento y transferencias</h2>
         <ul>
-          <li>Sistemas CRM.</li>
+          <li>Sistemas CRM y ERP.</li>
           <li>Infraestructura tecnológica propia o de terceros.</li>
           <li>Servicios corporativos de correo electrónico.</li>
           <li>Bases de datos utilizadas para operación del negocio.</li>

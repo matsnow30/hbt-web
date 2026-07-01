@@ -1,57 +1,77 @@
+import { useState } from "react";
+
 const servicios = [
   {
     id: "analisis-operacional",
-    area: "Lean management",
+    area: "Diagnóstico operacional",
     titulo: "Análisis operacional",
     texto:
-      "Observamos el proceso real, levantamos datos y detectamos cuellos de botella antes de proponer cambios.",
-    entregables: ["3G / Gemba", "BPMN en Bizagi", "TPM", "SMED"],
-    resultado: "Un diagnóstico claro de cómo trabaja hoy la operación.",
+      "Revisamos la operación, levantamos procesos y detectamos dónde se pierde valor.",
+    aplica: "La operación necesita entender dónde se pierde tiempo, control o capacidad operativa.",
+    entregables: ["Levantamiento de procesos", "Diagramas de flujo", "Oportunidades de mejora", "Planes de acción"],
+    metodologia: ["Gemba", "BPMN", "SIPOC", "Análisis de datos", "Identificación de desperdicios", "ACR"],
+    herramientas: ["Bizagi", "Ishikawa", "5 Porqués", "4Q", "Matriz RECI", "Matriz de priorización"],
+    resultado: "Un diagnóstico para decidir qué mejorar, automatizar y controlar.",
   },
   {
     id: "mejora-continua",
-    area: "Kaizen y DMAIC",
-    titulo: "Planes de mejora",
+    area: "Mejora continua",
+    titulo: "Mejora operacional",
     texto:
-      "Priorizamos acciones de mejora con metodología estructurada y foco en impacto operacional.",
-    entregables: ["Kaizen", "DMAIC", "PDCA", "A3", "5S"],
-    resultado: "Acciones concretas para ordenar, controlar y mejorar procesos.",
+      "Desarrollamos proyectos Kaizen y DMAIC para corregir ineficiencias operacionales y fortalecer el desempeño del proceso.",
+    aplica: "La empresa necesita abordar problemas operacionales con una metodología estructurada, medible y orientada a resultados.",
+    entregables: ["Proyecto Kaizen orientado a beneficios tangibles", "DMAIC", "Plan de acción", "Indicadores", "Seguimiento"],
+    metodologia: ["Kaizen", "DMAIC", "Análisis de datos", "PDCA", "5S", "Estandarización operacional"],
+    herramientas: ["POEV", "LUP", "Ishikawa", "5 Porqués", "ACR"],
+    resultado: "Mejoras implementables para aumentar productividad, calidad y control operacional.",
   },
   {
     id: "software-modular",
     area: "Software a medida",
-    titulo: "Sistemas por módulos",
+    titulo: "ERP y CRM a medida",
     texto:
-      "Desarrollamos plataformas ajustadas al proceso del cliente: CRM, portales, páginas web o gestión interna.",
-    entregables: ["CRM", "Portales web", "Scrum Master", "Módulos operativos"],
-    resultado: "Software construido según lo que la empresa realmente necesita.",
-  },
-  {
-    id: "automatizacion-procesos",
-    area: "Automatización",
-    titulo: "Flujos automatizados",
-    texto:
-      "Automatizamos compras, ventas, alertas, aprobaciones y tareas repetitivas con herramientas como n8n.",
-    entregables: ["n8n", "Poka-Yoke", "Compras y ventas", "Alertas automáticas"],
-    resultado: "Menos trabajo manual y mayor trazabilidad entre áreas.",
+      "Construimos sistemas ERP y CRM adaptados a los procesos reales de la empresa, integrando operación, gestión comercial e información clave del negocio.",
+    aplica: "La empresa necesita ordenar su operación, clientes, ventas, registros o áreas internas en un sistema propio.",
+    entregables: ["ERP", "CRM", "Módulos operativos", "Integraciones", "Flujos internos"],
+    metodologia: ["Levantamiento funcional", "Análisis de datos", "Diseño modular", "Modelamiento de procesos", "Implementación iterativa"],
+    herramientas: ["React", "Node.js", "APIs", "Bases de datos", "Git"],
+    resultado: "Un sistema empresarial diseñado según la forma real en que trabaja la organización.",
   },
   {
     id: "datos-dashboard",
-    area: "Indicadores financieros",
-    titulo: "Análisis y control de gestión",
+    area: "Datos y gestión",
+    titulo: "Datos e inteligencia de negocios",
     texto:
-      "Analizamos indicadores operativos y financieros para definir acciones que mejoren el rendimiento del negocio.",
-    entregables: ["MySQL", "Python", "Dashboards"],
-    resultado: "Software e indicadores para tomar decisiones con información clara.",
+      "Consolidamos información dispersa y construimos bases de datos, indicadores y reportes para mejorar el control de gestión.",
+    aplica: "La empresa necesita transformar datos operativos o financieros en información confiable para tomar decisiones.",
+    entregables: ["Bases de datos", "Indicadores", "Reportes de gestión", "Business Intelligence", "Integración de fuentes"],
+    metodologia: ["Análisis de datos", "Modelamiento de datos", "Definición de KPIs", "Integración de fuentes", "Validación de información"],
+    herramientas: ["MySQL", "Python", "Power BI", "Excel avanzado", "Dashboards"],
+    resultado: "Información confiable para analizar resultados, controlar la gestión y decidir con mayor rapidez.",
   },
   {
     id: "planificacion-estrategica",
     area: "Dirección del negocio",
-    titulo: "Planificación estratégica",
+    titulo: "Planificación y control estratégico",
     texto:
-      "Alineamos objetivos, indicadores y planes de acción para orientar mejor la toma de decisiones.",
-    entregables: ["Balanced Scorecard", "Objetivos", "Planes de acción"],
-    resultado: "Una hoja de ruta clara para gestionar y crecer con foco.",
+      "Traducimos objetivos del negocio en indicadores, responsables y planes de acción para gestionar la ejecución con foco.",
+    aplica: "La empresa necesita ordenar prioridades, medir avances y conectar la estrategia con la operación diaria.",
+    entregables: ["Objetivos estratégicos", "Indicadores", "Responsables", "Planes de acción", "Seguimiento"],
+    metodologia: ["Análisis de datos", "Balanced Scorecard", "Definición de KPIs", "Mapa estratégico", "Seguimiento de gestión"],
+    herramientas: ["Mapa estratégico", "Cuadro de mando", "Matriz estratégica", "Reportes ejecutivos", "Tablero de seguimiento"],
+    resultado: "Una hoja de ruta clara para controlar avances y orientar decisiones de gestión.",
+  },
+  {
+    id: "incubadora-proyectos",
+    area: "Innovación aplicada",
+    titulo: "Incubadora de proyectos",
+    texto:
+      "Acompañamos ideas, oportunidades internas o nuevos servicios desde su definición inicial hasta una propuesta estructurada de implementación.",
+    aplica: "La empresa tiene una idea o iniciativa con potencial, pero necesita ordenarla, validarla y transformarla en un proyecto ejecutable.",
+    entregables: ["Definición del problema", "Propuesta de valor", "Prototipo o MVP", "Validación", "Hoja de ruta"],
+    metodologia: ["Análisis de datos", "Design Thinking", "Lean Startup", "MVP", "Validación de hipótesis", "Priorización"],
+    herramientas: ["Canvas", "Roadmap", "Figma", "Prototipos funcionales", "Matriz de priorización"],
+    resultado: "Un proyecto estructurado para decidir si desarrollar, pilotear o escalar.",
   },
 ];
 
@@ -77,11 +97,27 @@ const enfoque = [
 ];
 
 function Servicios() {
+  const [detalleActivo, setDetalleActivo] = useState(null);
+
+  const abrirDetalle = (servicioId) => {
+    setDetalleActivo(servicioId);
+  };
+
+  const cerrarDetalle = () => setDetalleActivo(null);
+
+  const servicioActivo = servicios.find(
+    (servicio) => servicio.id === detalleActivo
+  );
+
   return (
     <main className="services-page">
       <section className="services-hero">
         <div className="services-hero__content">
           <span className="services-hero__eyebrow">SERVICIOS HBT</span>
+
+          <h1>
+            Soluciones de ingeniería, datos y software para mejorar la operación.
+          </h1>
 
           <p>
             Combinamos Lean Management, análisis de datos y desarrollo de software
@@ -102,33 +138,99 @@ function Servicios() {
       </section>
 
       <section className="services-grid" aria-label="Listado de servicios HBT">
-        {servicios.map((servicio, index) => (
-          <article
-            className={`service-card ${index === 0 ? "service-card--featured" : ""}`}
-            key={servicio.id}
-          >
-            <div>
-              <span className="service-card__area">{servicio.area}</span>
+        {servicios.map((servicio) => (
+            <article
+              className="service-card"
+              key={servicio.id}
+            >
+              <div>
+                <span className="service-card__area">{servicio.area}</span>
 
-              <div className="service-line" />
+                <div className="service-line" />
 
-              <h2>{servicio.titulo}</h2>
+                <h2>{servicio.titulo}</h2>
 
-              <p>{servicio.texto}</p>
+                <p>{servicio.texto}</p>
 
-              <ul>
-                {servicio.entregables.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
+                <p className="service-card__fit">
+                  <strong>Cuándo aplica</strong>
+                  {servicio.aplica}
+                </p>
 
-            <div className="service-card__footer">
-              <span>{servicio.resultado}</span>
-            </div>
-          </article>
+                <button
+                  className="service-card__detail-button"
+                  type="button"
+                  aria-haspopup="dialog"
+                  onClick={() => abrirDetalle(servicio.id)}
+                >
+                  Ver detalle
+                </button>
+              </div>
+            </article>
         ))}
       </section>
+
+      {servicioActivo && (
+        <div
+          className="service-detail"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="service-detail-title"
+          onClick={cerrarDetalle}
+        >
+          <section className="service-detail__panel" onClick={(event) => event.stopPropagation()}>
+            <button
+              className="service-detail__close"
+              type="button"
+              aria-label="Cerrar detalle"
+              onClick={cerrarDetalle}
+            >
+              Cerrar
+            </button>
+
+            <span className="service-detail__eyebrow">{servicioActivo.area}</span>
+            <h2 id="service-detail-title">{servicioActivo.titulo}</h2>
+            <p>
+              Revisa los entregables, la metodología y las herramientas utilizadas
+              para ejecutar el trabajo.
+            </p>
+
+            <div className="service-detail__sections">
+              <section>
+                <strong className="service-detail__label">Entregables</strong>
+                <ul>
+                  {servicioActivo.entregables.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </section>
+
+              <section>
+                <strong className="service-detail__label">Metodología</strong>
+                <ul>
+                  {servicioActivo.metodologia.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </section>
+
+              <section>
+                <strong className="service-detail__label">Herramientas</strong>
+                <ul>
+                  {servicioActivo.herramientas.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </section>
+            </div>
+
+            <div className="service-detail__result">
+              <span>Resultado esperado</span>
+              <strong>{servicioActivo.resultado}</strong>
+            </div>
+          </section>
+        </div>
+      )}
 
       <section className="services-cta">
         <div>

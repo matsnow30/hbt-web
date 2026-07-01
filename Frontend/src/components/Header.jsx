@@ -10,7 +10,7 @@ function Header() {
     <header className="header">
       <div className="header-container">
         <NavLink to="/" className="header-logo" onClick={closeMenu}>
-          <img src="/logo_hbt.avif" alt="HBT Engineering & Technology" />
+          <img src="/logo.png" alt="HBT Engineering & Technology" />
         </NavLink>
 
         <button

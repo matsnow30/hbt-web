@@ -3,10 +3,10 @@ import "../styles/home.css";
 
 function Inicio() {
   const problemas = [
-    "Procesos que dependen de planillas y correos.",
-    "Reportes que se preparan a mano y llegan tarde.",
-    "Solicitudes, documentos o tareas sin seguimiento claro.",
-    "Información repetida entre áreas o sistemas que no conversan.",
+    "Procesos operativos con bajo nivel de estandarización y control.",
+    "Información de gestión dispersa entre planillas, sistemas y áreas de trabajo.",
+    "Operaciones con alta carga manual y oportunidades claras de automatización.",
+    "Sistemas, registros o bases de datos que no están integrados entre sí.",
   ];
 
   const capacidades = [
@@ -22,7 +22,7 @@ function Inicio() {
       titulo: "Sistemas a medida",
       numero: "02",
       texto:
-        "Desarrollamos plataformas internas para ordenar solicitudes, registros, tareas y responsables.",
+        "Desarrollamos plataformas internas, CRM y ERP para ordenar solicitudes, registros, tareas y responsables.",
       icono: "/inicio/sistemas-empresariales.avif",
       imagen: "/inicio/winedatos.avif",
     },
