@@ -1,24 +1,124 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { ciudadesChile } from "../data/ciudadesChile";
 
 function Contacto() {
   const [estadoEnvio, setEstadoEnvio] = useState("idle");
+  const [nombreValor, setNombreValor] = useState("");
+  const [correoValor, setCorreoValor] = useState("");
+  const [empresaValor, setEmpresaValor] = useState("");
+  const [telefonoValor, setTelefonoValor] = useState("");
+  const [industriaSeleccionada, setIndustriaSeleccionada] = useState("");
+  const [industriaAbierta, setIndustriaAbierta] = useState(false);
+  const [ciudadValor, setCiudadValor] = useState("");
+  const [ciudadAbierta, setCiudadAbierta] = useState(false);
+  const [mensajeValor, setMensajeValor] = useState("");
 
   const desafios = [
     "Análisis operacional",
     "Mejora de procesos",
     "Software a medida",
+    "ERP / CRM a medida",
     "Automatización",
     "Indicadores y datos",
     "Planificación estratégica",
+    "Project Discovery & Development",
     "Otro",
   ];
 
-  const pasos = [
-    "Revisamos tu solicitud.",
-    "Te contactamos en 24 a 48 horas hábiles.",
-    "Coordinamos una conversación inicial.",
-    "Si hace sentido, levantamos el proceso contigo.",
+  const industrias = [
+    { value: "forestal", label: "Forestal" },
+    { value: "manufactura", label: "Manufactura" },
+    { value: "logistica", label: "Logística" },
+    { value: "mineria", label: "Minería" },
+    { value: "construccion", label: "Construcción" },
+    { value: "servicios", label: "Servicios" },
+    { value: "retail", label: "Retail" },
+    { value: "pyme", label: "Pyme" },
+    { value: "otra", label: "Otra" },
   ];
+
+  const industriaActiva = industrias.find(
+    (industria) => industria.value === industriaSeleccionada
+  );
+
+  const normalizarTexto = (texto) =>
+    texto
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase();
+
+  const ciudadesFiltradas = ciudadesChile
+    .filter((ciudad) =>
+      normalizarTexto(ciudad).includes(normalizarTexto(ciudadValor))
+    )
+    .slice(0, 60);
+
+  useEffect(() => {
+    if (estadoEnvio !== "success") return undefined;
+
+    const temporizador = window.setTimeout(() => {
+      setEstadoEnvio("idle");
+    }, 4200);
+
+    return () => window.clearTimeout(temporizador);
+  }, [estadoEnvio]);
+
+  const limpiarNombre = (valor) =>
+    valor
+      .replace(/[^A-Za-zÁÉÍÓÚÜÑáéíóúüñ' -]/g, "")
+      .replace(/\s{2,}/g, " ")
+      .slice(0, 60);
+
+  const capitalizarNombre = (valor) =>
+    limpiarNombre(valor)
+      .trim()
+      .toLowerCase()
+      .replace(/(^|[\s'-])([a-záéíóúüñ])/g, (texto) =>
+        texto.toUpperCase()
+      );
+
+  const limpiarTextoEmpresa = (valor) =>
+    valor
+      .replace(/\s{2,}/g, " ")
+      .slice(0, 80);
+
+  const limpiarCorreo = (valor) =>
+    valor
+      .toLowerCase()
+      .replace(/\s/g, "")
+      .slice(0, 90);
+
+  const formatearTelefono = (valor) => {
+    let digitos = valor.replace(/\D/g, "");
+
+    if (digitos.startsWith("569")) {
+      digitos = digitos.slice(3);
+    } else if (digitos.startsWith("56")) {
+      digitos = digitos.slice(2);
+    }
+
+    if (digitos.startsWith("9")) {
+      digitos = digitos.slice(1);
+    }
+
+    const numero = digitos.slice(0, 8);
+    const primeraParte = numero.slice(0, 4);
+    const segundaParte = numero.slice(4, 8);
+
+    if (!numero) return "";
+    return `+569 ${primeraParte}${segundaParte ? ` ${segundaParte}` : ""}`;
+  };
+
+  const limpiarCiudad = (valor) =>
+    valor
+      .replace(/[^A-Za-zÁÉÍÓÚÜÑáéíóúüñ' -]/g, "")
+      .replace(/\s{2,}/g, " ")
+      .slice(0, 50);
+
+  const limpiarMensaje = (valor) =>
+    valor
+      .replace(/\s{3,}/g, "  ")
+      .slice(0, 700);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -31,6 +131,7 @@ function Contacto() {
       empresa: formData.get("empresa"),
       telefono: formData.get("telefono"),
       industria: formData.get("industria"),
+      ciudad: formData.get("ciudad"),
       desafios: formData.getAll("desafio"),
       mensaje: formData.get("mensaje"),
     };
@@ -38,6 +139,15 @@ function Contacto() {
     window.setTimeout(() => {
       console.info("Solicitud HBT pendiente de conectar al backend:", datosContacto);
       setEstadoEnvio("success");
+      setNombreValor("");
+      setCorreoValor("");
+      setEmpresaValor("");
+      setTelefonoValor("");
+      setIndustriaSeleccionada("");
+      setIndustriaAbierta(false);
+      setCiudadValor("");
+      setCiudadAbierta(false);
+      setMensajeValor("");
       event.target.reset();
     }, 700);
   };
@@ -49,36 +159,13 @@ function Contacto() {
           CONTACTO HBT
         </span>
 
-        <h1>
-          Cuéntanos qué necesitas ordenar.
-        </h1>
-
         <p>
-          Describe el proceso, indicador, sistema o decisión que quieres mejorar.
-          Revisaremos tu caso para entender la operación antes de proponer.
+          Describe brevemente tu necesidad. Revisaremos el contexto para entender
+          la operación antes de proponer una solución.
         </p>
       </section>
 
       <section className="contact-layout" aria-label="Contacto HBT">
-        <aside className="contact-next">
-          <span>QUÉ OCURRE DESPUÉS</span>
-          <h2>Una primera conversación, sin venderte una solución antes de entender.</h2>
-
-          <ol>
-            {pasos.map((paso, index) => (
-              <li key={paso}>
-                <strong>{String(index + 1).padStart(2, "0")}</strong>
-                <p>{paso}</p>
-              </li>
-            ))}
-          </ol>
-
-          <p className="contact-next__note">
-            Puedes escribirnos aunque todavía no tengas clara la solución. Basta con
-            contarnos que esta generando desorden, trabajo manual, errores o falta de informacion.
-          </p>
-        </aside>
-
         <section className="contact-card" aria-label="Formulario de contacto HBT">
           <div className="contact-card__header">
             <span>
@@ -86,7 +173,7 @@ function Contacto() {
             </span>
 
             <h2>
-              Datos principales.
+              Información para entender tu caso.
             </h2>
 
             <p>
@@ -102,8 +189,15 @@ function Contacto() {
                 <input
                   type="text"
                   name="nombre"
+                  value={nombreValor}
                   placeholder="Tu nombre completo"
                   autoComplete="name"
+                  maxLength="60"
+                  minLength="5"
+                  pattern="[A-Za-zÁÉÍÓÚÜÑáéíóúüñ' -]{5,60}"
+                  title="Usa solo letras y espacios. Ejemplo: Matias Gonzalez Jara."
+                  onChange={(event) => setNombreValor(limpiarNombre(event.target.value))}
+                  onBlur={() => setNombreValor(capitalizarNombre(nombreValor))}
                   required
                 />
               </label>
@@ -114,8 +208,12 @@ function Contacto() {
                 <input
                   type="email"
                   name="correo"
+                  value={correoValor}
                   placeholder="correo@empresa.cl"
                   autoComplete="email"
+                  maxLength="90"
+                  title="Ingresa un correo válido. Ejemplo: nombre@empresa.cl"
+                  onChange={(event) => setCorreoValor(limpiarCorreo(event.target.value))}
                   required
                 />
               </label>
@@ -126,8 +224,12 @@ function Contacto() {
                 <input
                   type="text"
                   name="empresa"
+                  value={empresaValor}
                   placeholder="Nombre de la empresa"
                   autoComplete="organization"
+                  maxLength="80"
+                  onChange={(event) => setEmpresaValor(limpiarTextoEmpresa(event.target.value))}
+                  onBlur={() => setEmpresaValor(limpiarTextoEmpresa(empresaValor).trim())}
                   required
                 />
               </label>
@@ -138,29 +240,123 @@ function Contacto() {
                 <input
                   type="tel"
                   name="telefono"
-                  placeholder="+56 9 1234 5678"
+                  value={telefonoValor}
+                  placeholder="+569 5080 1142"
                   autoComplete="tel"
+                  inputMode="tel"
+                  maxLength="14"
+                  pattern="^\+569 [0-9]{4} [0-9]{4}$"
+                  title="Usa el formato +569 5080 1142"
+                  onChange={(event) => setTelefonoValor(formatearTelefono(event.target.value))}
                 />
               </label>
 
-              <label className="contact-field">
+              <div className="contact-field">
                 <span>Industria</span>
 
-                <select name="industria" defaultValue="">
-                  <option value="" disabled>
-                    Selecciona una industria
-                  </option>
-                  <option value="forestal">Forestal</option>
-                  <option value="manufactura">Manufactura</option>
-                  <option value="logistica">Logística</option>
-                  <option value="mineria">Minería</option>
-                  <option value="construccion">Construcción</option>
-                  <option value="servicios">Servicios</option>
-                  <option value="retail">Retail</option>
-                  <option value="pyme">Pyme</option>
-                  <option value="otra">Otra</option>
-                </select>
-              </label>
+                <input type="hidden" name="industria" value={industriaSeleccionada} />
+
+                <div className={`contact-select${industriaAbierta ? " is-open" : ""}`}>
+                  <button
+                    type="button"
+                    className="contact-select__button"
+                    aria-haspopup="listbox"
+                    aria-expanded={industriaAbierta}
+                    onClick={() => setIndustriaAbierta((abierta) => !abierta)}
+                  >
+                    <span>
+                      {industriaActiva ? industriaActiva.label : "Selecciona una industria"}
+                    </span>
+                    <svg viewBox="0 0 20 20" aria-hidden="true">
+                      <path d="M5.5 7.5 10 12l4.5-4.5" />
+                    </svg>
+                  </button>
+
+                  {industriaAbierta && (
+                    <div className="contact-select__menu" role="listbox">
+                      {industrias.map((industria) => (
+                        <button
+                          type="button"
+                          key={industria.value}
+                          role="option"
+                          aria-selected={industriaSeleccionada === industria.value}
+                          className={
+                            industriaSeleccionada === industria.value
+                              ? "contact-select__option is-selected"
+                              : "contact-select__option"
+                          }
+                          onClick={() => {
+                            setIndustriaSeleccionada(industria.value);
+                            setIndustriaAbierta(false);
+                          }}
+                        >
+                          {industria.label}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="contact-field">
+                <span>Ciudad</span>
+
+                <div
+                  className={`contact-combobox${ciudadAbierta ? " is-open" : ""}`}
+                  onBlur={(event) => {
+                    if (!event.currentTarget.contains(event.relatedTarget)) {
+                      setCiudadAbierta(false);
+                    }
+                  }}
+                >
+                  <input
+                    type="text"
+                    name="ciudad"
+                    value={ciudadValor}
+                    placeholder="Ciudad o comuna"
+                    autoComplete="off"
+                    maxLength="50"
+                    role="combobox"
+                    aria-expanded={ciudadAbierta}
+                    aria-controls="ciudades-chile-lista"
+                    onFocus={() => setCiudadAbierta(true)}
+                    onChange={(event) => {
+                      setCiudadValor(limpiarCiudad(event.target.value));
+                      setCiudadAbierta(true);
+                    }}
+                    onBlur={() => setCiudadValor(limpiarCiudad(ciudadValor).trim())}
+                  />
+
+                  {ciudadAbierta && (
+                    <div
+                      className="contact-combobox__menu"
+                      id="ciudades-chile-lista"
+                      role="listbox"
+                    >
+                      {ciudadesFiltradas.length > 0 ? (
+                        ciudadesFiltradas.map((ciudad) => (
+                          <button
+                            type="button"
+                            key={ciudad}
+                            className="contact-combobox__option"
+                            role="option"
+                            aria-selected={ciudadValor === ciudad}
+                            onMouseDown={(event) => event.preventDefault()}
+                            onClick={() => {
+                              setCiudadValor(ciudad);
+                              setCiudadAbierta(false);
+                            }}
+                          >
+                            {ciudad}
+                          </button>
+                        ))
+                      ) : (
+                        <p className="contact-combobox__empty">Sin resultados</p>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
 
             <fieldset className="contact-challenge">
@@ -191,16 +387,13 @@ function Contacto() {
               <textarea
                 name="mensaje"
                 rows="5"
+                value={mensajeValor}
                 placeholder="Cuéntanos brevemente qué proceso, indicador, sistema u operación quieres mejorar."
+                maxLength="700"
+                onChange={(event) => setMensajeValor(limpiarMensaje(event.target.value))}
                 required
               />
             </label>
-
-            {estadoEnvio === "success" && (
-              <p className="contact-form__status" role="status">
-                Solicitud registrada. Cuando conectemos el backend, este mensaje se enviará automáticamente.
-              </p>
-            )}
 
             <div className="contact-form__footer">
               <p>
@@ -214,6 +407,25 @@ function Contacto() {
           </form>
         </section>
       </section>
+
+      {estadoEnvio === "success" && (
+        <div className="contact-success" role="status" aria-live="polite">
+          <div className="contact-success__panel">
+            <div className="contact-success__mark" aria-hidden="true">
+              <svg viewBox="0 0 28 28">
+                <path d="M7.5 14.5 12 19l9-10" />
+              </svg>
+            </div>
+
+            <span>Solicitud enviada</span>
+            <strong>Primero entendemos el problema; después definimos el mejor camino.</strong>
+            <p>
+              Revisaremos tu solicitud y te contactaremos dentro de 24 a 48 horas hábiles
+              para coordinar una conversación inicial.
+            </p>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

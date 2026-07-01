@@ -64,7 +64,7 @@ const servicios = [
   {
     id: "incubadora-proyectos",
     area: "Innovación aplicada",
-    titulo: "Incubadora de proyectos",
+    titulo: "Project Discovery & Development",
     texto:
       "Acompañamos ideas, oportunidades internas o nuevos servicios desde su definición inicial hasta una propuesta estructurada de implementación.",
     aplica: "La empresa tiene una idea o iniciativa con potencial, pero necesita ordenarla, validarla y transformarla en un proyecto ejecutable.",
@@ -114,10 +114,6 @@ function Servicios() {
       <section className="services-hero">
         <div className="services-hero__content">
           <span className="services-hero__eyebrow">SERVICIOS HBT</span>
-
-          <h1>
-            Soluciones de ingeniería, datos y software para mejorar la operación.
-          </h1>
 
           <p>
             Combinamos Lean Management, análisis de datos y desarrollo de software
